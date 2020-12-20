@@ -1,0 +1,41 @@
+.new-question-window {
+  border: 2px solid slategray;
+  border-radius: 5px;
+  width: 500px;
+  margin: 100px;
+}
+
+.new-question-textarea {
+  width: 450px;
+  margin: 0 25px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.contain {
+  display: flex;
+}
+
+.answer-type-rb {
+  width: 210px;
+  height: 50px;
+  margin: 0 25px;
+  border: 2px solid slategray;
+  border-radius: 5px;
+}
+
+.answer-opt-count {
+  width: 210px;
+  height: 50px;
+  margin: 0 20px;
+  border: 2px solid slategray;
+  border-radius: 5px;
+}
+
+.save-cancel-buttons {
+  width: 50px;
+  padding: 0 350px;
+  display: flex;
+}
