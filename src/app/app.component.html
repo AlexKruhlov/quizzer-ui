@@ -2,15 +2,9 @@
 
   <mat-form-field class="new-question-textarea">
     <mat-label>Question</mat-label>
-    <textarea matInput placeholder="Some question?" [(ngModel)]="question"></textarea>
-    <button mat-button *ngIf="question" matSuffix mat-icon-button aria-label="Clear" (click)="question=''">
+    <textarea matInput placeholder="Some question?" [(ngModel)]="question.questionText"></textarea>
+    <button mat-button *ngIf="question" matSuffix mat-icon-button aria-label="Clear" (click)="clearQuestionText()">
       <mat-icon>close</mat-icon>
-    </button>
-    <button mat-button *ngIf="question" matSuffix mat-icon-button aria-label="Clear" (click)="question=''">
-      <mat-icon>check_circle</mat-icon>
-    </button>
-    <button mat-button *ngIf="question" matSuffix mat-icon-button aria-label="Clear" (click)="question=''">
-      <mat-icon>delete</mat-icon>
     </button>
   </mat-form-field>
 
@@ -18,9 +12,9 @@
     <div class="answer-type-rb">
       <div style="margin: 0 10px">
         <label id="radio-group-label" style="font-size: medium; margin: 5px 0">Answer amount</label><br>
-        <mat-radio-group aria-labelledby="Select some item">
-          <mat-radio-button value="1" checked>Single</mat-radio-button>
-          <mat-radio-button value="2">Multiple</mat-radio-button>
+        <mat-radio-group aria-labelledby="Select some item" [(ngModel)]="question.questionStrategy">
+          <mat-radio-button value="ONE_ANSWER" checked>Single</mat-radio-button>
+          <mat-radio-button value="MANY_ANSWERS">Multiple</mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
@@ -29,15 +23,16 @@
       <div style="font-size: medium; text-align: center; margin: 5px 0">Answer options count</div>
       <div style="font-size: large; text-align: center">{{getAnswerOptionCount()}}</div>
     </div>
-
   </div>
 
   <div style="margin: 20px 0">
-    <div *ngFor="let answer of answerOptions; let i = index; trackBy: trackByFn">
+    <div *ngFor="let answer of question.answerOptions; let i = index; trackBy: trackByFn">
       <mat-form-field class="new-question-textarea">
         <mat-label>Answer option</mat-label>
-        <textarea matInput placeholder="Some answer" [(ngModel)]="answerOptions[i]"></textarea>
-        <button mat-button *ngIf="answer" matSuffix mat-icon-button aria-label="Clear" (click)="answerOptions[i]=''">
+        <textarea matInput placeholder="Some answer"
+                  [(ngModel)]="question.answerOptions[i].answerOptionText"></textarea>
+        <button mat-button *ngIf="answer" matSuffix mat-icon-button aria-label="Clear"
+                (click)="question.answerOptions[i].answerOptionText=''">
           <mat-icon>close</mat-icon>
         </button>
         <button mat-button *ngIf="isAnswerOptionLastAndNonEmpty(answer, i)" matSuffix mat-icon-button aria-label="Clear"

@@ -1,7 +1,7 @@
-import {AnswerOption} from './answeroption';
+import {AnswerOption} from './answer-option';
 
 export interface Question {
-  id: string;
+  id: string | null;
   questionText: string;
   questionStrategy: 'ONE_ANSWER' | 'MANY_ANSWERS';
   answerOptions: [AnswerOption];

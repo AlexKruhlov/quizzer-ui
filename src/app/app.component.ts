@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Question} from './question';
+import {AnswerOption} from './answer-option';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  question = '';
-  answerOptions = [''];
+  question: Question = this.createNewQuestion();
 
   trackByFn(index: any, item: any): any {
     return item.id;
@@ -15,45 +16,64 @@ export class AppComponent {
 
   getAnswerOptionCount(): number {
     let emptyAnswerOptionCount = 0;
-    this.answerOptions.forEach((answOption) => {
-      if (answOption === '') {
+    this.question.answerOptions.forEach((answerOption) => {
+      if (answerOption.answerOptionText === '') {
         emptyAnswerOptionCount++;
       }
     });
-    return this.answerOptions.length - emptyAnswerOptionCount;
+    return this.question.answerOptions.length - emptyAnswerOptionCount;
   }
 
   addNewAnswerOption(): void {
-    this.answerOptions.push('');
+    this.question.answerOptions.push({
+      id: null,
+      answerOptionText: ''
+    });
   }
 
   deleteAnswerOption(index: number): void {
-    this.answerOptions.splice(index, 1);
-    if (this.answerOptions.length === 0) {
+    this.question.answerOptions.splice(index, 1);
+    if (!this.question.answerOptions.length) {
       this.addNewAnswerOption();
     }
   }
 
-  isAnswerOptionLastAndNonEmpty(answer: string, answerOptionIndex: number): boolean {
-    return answer !== '' && answerOptionIndex === this.answerOptions.length - 1;
+  isAnswerOptionLastAndNonEmpty(answerOption: AnswerOption, answerOptionIndex: number): boolean {
+    return answerOption.answerOptionText !== '' && answerOptionIndex === this.question.answerOptions.length - 1;
   }
 
   saveQuestion(): void {
-    if (confirm('save question')) {
+    if (confirm('Ok')) {
+      console.log(this.question);
       this.clearAllQuestion();
     }
   }
 
   clearAllQuestion(): void {
-    this.question = '';
-    this.answerOptions = [''];
+    this.question = this.createNewQuestion();
   }
 
   isDisabled(): boolean {
-    return this.question === '' || this.allAnswerOptionsIsEmpty();
+    return this.question.questionText === '' || this.allAnswerOptionsIsEmpty();
   }
 
   allAnswerOptionsIsEmpty(): boolean {
-    return !this.answerOptions.find(answerOption => answerOption !== '');
+    return !this.question.answerOptions.find(answerOption => answerOption.answerOptionText !== '');
+  }
+
+  createNewQuestion(): Question {
+    return {
+      id: null,
+      questionText: '',
+      questionStrategy: 'ONE_ANSWER',
+      answerOptions: [{
+        id: null,
+        answerOptionText: ''
+      }]
+    };
+  }
+
+  clearQuestionText(): void {
+    this.question.questionText = '';
   }
 }
