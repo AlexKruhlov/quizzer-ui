@@ -27,7 +27,7 @@
   <div style="margin: 20px 0">
     <div *ngFor="let answer of question.answerOptions; let i = index; trackBy: trackByFn">
       <mat-form-field class="new-question-textarea">
-        <mat-label>Answer option</mat-label>
+        <mat-label>Question type</mat-label>
         <textarea matInput placeholder="Some answer"
                   [(ngModel)]="question.answerOptions[i].answerOptionText"></textarea>
         <button mat-button *ngIf="answer" matSuffix mat-icon-button aria-label="Clear"
