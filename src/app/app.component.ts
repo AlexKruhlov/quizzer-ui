@@ -1,14 +1,24 @@
 import {Component} from '@angular/core';
 import {Question} from './question';
 import {AnswerOption} from './answer-option';
+import {ServerService} from './server.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   question: Question = this.createNewQuestion();
+  questions: Question[] = [];
+
+  constructor(private serverService: ServerService) {
+  }
+
+  addQuestion(): void {
+    this.serverService.saveQuestion(this.question)
+      .subscribe((question: Question) => this.questions.push(question));
+  }
 
   trackByFn(index: any, item: any): any {
     return item.id;
@@ -45,6 +55,7 @@ export class AppComponent {
   saveQuestion(): void {
     if (confirm('Ok')) {
       console.log(this.question);
+      this.addQuestion();
       this.clearAllQuestion();
     }
   }
