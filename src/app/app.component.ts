@@ -13,11 +13,17 @@ export class AppComponent {
   questions: Question[] = [];
 
   constructor(private serverService: ServerService) {
+    this.findAllQuestions();
+  }
+
+  private findAllQuestions(): void {
+    this.serverService.findAllQuestions()
+      .subscribe((questions: Question[]) => this.questions = questions);
   }
 
   addQuestion(): void {
     this.serverService.saveQuestion(this.question)
-      .subscribe((question: Question) => this.questions.push(question));
+      .subscribe(() => this.findAllQuestions());
   }
 
   trackByFn(index: any, item: any): any {

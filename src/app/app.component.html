@@ -1,5 +1,4 @@
 <div class="new-question-window">
-
   <mat-form-field class="new-question-textarea">
     <mat-label>Question</mat-label>
     <textarea matInput placeholder="Some question?" [(ngModel)]="question.questionText"></textarea>
@@ -48,6 +47,13 @@
     <div class="save-cancel-buttons">
       <button mat-button color="primary" [disabled]="isDisabled()" (click)="saveQuestion()">Save</button>
       <button mat-button color="warn" (click)="clearAllQuestion()">Cancel</button>
+    </div>
+  </div>
+
+  <div>
+    <div style="margin: 30px 20px">Questions</div>
+    <div style="margin: 10px 20px" *ngFor="let question of questions; let i = index">
+      {{i + 1}}. {{question.questionText}}
     </div>
   </div>
 

@@ -18,6 +18,10 @@ export class ServerService {
   constructor(private http: HttpClient) {
   }
 
+  findAllQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>('http://localhost:8081/question', httpOptions);
+  }
+
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>('http://localhost:8081/question', question, httpOptions);
   }
