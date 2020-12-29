@@ -1,6 +1,6 @@
 # Question creating feature
 
-## 1. Question creating page area
+## 1. Question Creating Page Area
 
 1. I as a User can see empty field to have a possibility to input some question text.
 2. I as a User can clear field for inputting question clicking on the appropriate button.
