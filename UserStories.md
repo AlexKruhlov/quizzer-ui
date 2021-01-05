@@ -4,11 +4,11 @@
 
 - [x] I as a User can see empty field to have a possibility to input some question text.
 - [x] I as a User can clear field for inputting question clicking on the appropriate button.
-- [x] I as a User can chose one of two question types: **single** (default) or **multiple**.
+- [x] I as a User can choose one of two question types: **single** (default) or **multiple**.
 - [x] I as a User can see empty field to have a possibility to input answer option (several answer options).
 - [x] I as a User can clear any of input fields for answer options.
 - [x] I as a User can delete any of input fields for answer options.
-- [x] I as a User can edit question text and existing answer fields.
+- [x] I as a User can edit question text and existing answer option fields.
 - [x] I as a User can save into database whole question (question text, answer options, etc.).
 - [x] I as a User cannot save whole question if question text field is empty.
 - [x] I as a User cannot save whole question if all existing answer option fields are empty.
@@ -18,7 +18,7 @@
 
   * question text field should be empty;
   * answer options fields should be removed excepts one which should be empty;
-  * answer options count should be set to `0`;
+  * answer options count should be equal to `0`;
   * question type should be set to default;
 
 ## 2. Question Interactive Preview Page Area
