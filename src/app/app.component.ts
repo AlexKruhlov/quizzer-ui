@@ -22,6 +22,7 @@ export class AppComponent {
   }
 
   addQuestion(): void {
+    this.question.answerOptions = this.question.answerOptions.filter((answerOption) => answerOption.answerOptionText !== '');
     this.serverService.saveQuestion(this.question)
       .subscribe(() => this.findAllQuestions());
   }

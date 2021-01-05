@@ -12,7 +12,7 @@
 - [x] I as a User can save into database whole question (question text, answer options, etc.).
 - [x] I as a User cannot save whole question if question text field is empty.
 - [x] I as a User cannot save whole question if all existing answer option fields are empty.
-- [ ] I as a User can only save existing (non-empty) answer options.
+- [x] I as a User can only save existing (non-empty) answer options.
 - [x] I as a User can see existing (non-empty) answer options count.
 - [x] I as a User can cancel all inputs. As a result:
 
