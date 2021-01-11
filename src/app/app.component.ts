@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Question} from './question';
 import {AnswerOption} from './answer-option';
 import {ServerService} from './server.service';
@@ -8,12 +8,11 @@ import {ServerService} from './server.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   question: Question = AppComponent.createNewQuestion();
   questions: Question[] = [];
 
   constructor(private serverService: ServerService) {
-    this.findAllQuestions();
   }
 
   private static createNewQuestion(): Question {
@@ -28,17 +27,19 @@ export class AppComponent {
     };
   }
 
+  ngOnInit(): void {
+    this.findAllQuestions();
+  }
+
   clearQuestionText(): void {
     this.question.questionText = '';
   }
 
   saveQuestion(): void {
-    if (confirm('Ok')) {
-      this.question.answerOptions = this.searchNonEmptyAnswerOptions();
-      this.serverService.saveQuestion(this.question)
-        .subscribe(() => this.findAllQuestions());
-      this.renewQuestion();
-    }
+    this.question.answerOptions = this.searchNonEmptyAnswerOptions();
+    this.serverService.saveQuestion(this.question)
+      .subscribe(() => this.findAllQuestions());
+    this.renewQuestion();
   }
 
   renewQuestion(): void {
