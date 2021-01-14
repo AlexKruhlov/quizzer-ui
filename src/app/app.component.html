@@ -10,7 +10,7 @@
   <div class="contain">
     <div class="answer-type-rb">
       <div style="margin: 0 10px">
-        <label id="radio-group-label" style="font-size: medium; margin: 5px 0">Answer amount</label><br>
+        <label id="radio-group-label" style="font-size: medium; margin: 5px 0">Answer type</label><br>
         <mat-radio-group aria-labelledby="Select some item" [(ngModel)]="question.questionStrategy">
           <mat-radio-button value="ONE_ANSWER" checked>Single</mat-radio-button>
           <mat-radio-button value="MANY_ANSWERS">Multiple</mat-radio-button>
@@ -27,7 +27,7 @@
   <div style="margin: 20px 0">
     <div *ngFor="let answer of question.answerOptions; let i = index; trackBy: trackByFn">
       <mat-form-field class="new-question-textarea">
-        <mat-label>Question type</mat-label>
+        <mat-label>Answer</mat-label>
         <textarea matInput placeholder="Some answer"
                   [(ngModel)]="question.answerOptions[i].answerOptionText"></textarea>
         <button mat-button *ngIf="answer" matSuffix mat-icon-button aria-label="Clear"

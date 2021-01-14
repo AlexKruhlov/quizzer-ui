@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,20 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', async () => {
+  it('should input question text in text area and clear it by clicking on the button', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('quizzer-ui app is running!');
+    page.sendQuestionText('My question?');
+    expect(await page.getQuestionText()).toBe('My question?');
+    page.clickOnQuestionClearButton();
+    expect(await page.getQuestionText()).toBe('');
+  });
+
+  it('should change answer type', async () => {
+    await page.navigateTo();
+    expect(await page.getCheckedRadioButtonValue()).toBe('ONE_ANSWER');
+    await page.clickOnMultipleAnswerTypeRadioButton();
+    expect(await page.getCheckedRadioButtonValue()).toBe('MANY_ANSWERS');
+    await browser.sleep(3000);
   });
 
   afterEach(async () => {
