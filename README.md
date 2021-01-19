@@ -1,7 +1,7 @@
 # quizzer-ui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
-It's the front-end part of [quizzer project](https://github.com/AlexKruhlov/quzzer)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4. It's the front-end
+part of [quizzer project](https://github.com/AlexKruhlov/quzzer)
 
 ## Node And Angular Installing
 
