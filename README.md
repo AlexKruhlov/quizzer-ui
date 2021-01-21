@@ -45,3 +45,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out
 the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Installing Git
+Add to `~/.gitconfig` file following settings, specifying your own user info:
+```bash
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  di = diff
+  br = branch
+  sta = stash
+  lola = log --graph --decorate --oneline --all
+  llog = log --date=local
+  flog = log --pretty=fuller --decorate
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --addrev-commit --date=relative
+  lol = log --graph --decode --online
+  blog = log origin/master... --left-right
+[user]
+  name = 'Alexandr Kruhlov'
+  email = alkruglov777@gmail.com
+[core]
+  autocrlf = input
+  hooksPath = ./.
+```
