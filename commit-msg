@@ -1,0 +1,12 @@
+#!/bin/bash
+
+message_pattern="\[[[:digit:]]+\] .+"
+commit_msg_head=$(head -n 1 "$1")
+if [[ "$commit_msg_head" =~ $message_pattern ]]
+then
+  exit 0
+else
+  echo "[POLICY] Your message is not formatted correctly"
+  echo "Right example: [1256] Add new changes"
+  exit 1
+fi
