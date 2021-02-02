@@ -1,7 +1,7 @@
 # quizzer-ui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
-It's the front-end part of [quizzer project](https://github.com/AlexKruhlov/quzzer)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4. It's the front-end
+part of [quizzer project](https://github.com/AlexKruhlov/quzzer)
 
 ## Node And Angular Installing
 
@@ -47,7 +47,9 @@ To get more help on the Angular CLI use `ng help` or go check out
 the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## Installing Git
+
 Add to `~/.gitconfig` file following settings, specifying your own user info:
+
 ```bash
 [alias]
   co = checkout
@@ -59,7 +61,7 @@ Add to `~/.gitconfig` file following settings, specifying your own user info:
   lola = log --graph --decorate --oneline --all
   llog = log --date=local
   flog = log --pretty=fuller --decorate
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --addrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lol = log --graph --decode --online
   blog = log origin/master... --left-right
 [user]
@@ -71,3 +73,13 @@ Add to `~/.gitconfig` file following settings, specifying your own user info:
 ```
 
 ## [Installing bash-it](https://github.com/Bash-it/bash-it#installation)
+
+## Issue Resolving Guide
+
+1. Last build and all tests passing were success but e2e tests are failed now:
+
+* Try to update Chrome web driver:
+
+  ```bash
+   webdriver-manager update
+  ```
