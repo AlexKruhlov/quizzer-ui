@@ -1,7 +1,7 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {getTestBed, TestBed} from '@angular/core/testing';
 import {ServerService} from './server.service';
-import {Question} from './question';
+import {Question} from '../question/question';
 
 describe('Server Service', () => {
   let injector: TestBed;

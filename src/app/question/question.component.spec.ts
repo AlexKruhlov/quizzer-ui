@@ -1,26 +1,26 @@
 import {getTestBed, TestBed} from '@angular/core/testing';
-import {ServerService} from './server.service';
+import {ServerService} from '../service/server.service';
 import {Question, QuestionStrategy} from './question';
 import {AnswerOption} from './answer-option';
-import {AppComponent} from './app.component';
+import {QuestionComponent} from './question.component';
 import {of} from 'rxjs';
 
 describe('Server Service', () => {
   let injector: TestBed;
   let serverServiceSpy: jasmine.SpyObj<ServerService>;
-  let appComponent: AppComponent;
+  let appComponent: QuestionComponent;
 
   beforeEach(() => {
     const serverServiceTestConfSpy = jasmine.createSpyObj<ServerService>('ServerService', ['findAllQuestions', 'saveQuestion']);
 
     TestBed.configureTestingModule({
       providers: [
-        AppComponent,
+        QuestionComponent,
         {provide: ServerService, useValue: serverServiceTestConfSpy}
       ]
     });
     injector = getTestBed();
-    appComponent = injector.inject(AppComponent);
+    appComponent = injector.inject(QuestionComponent);
     serverServiceSpy = injector.inject(ServerService) as jasmine.SpyObj<ServerService>;
   });
 

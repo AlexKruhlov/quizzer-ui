@@ -1,0 +1,60 @@
+<div class="new-question-window">
+  <mat-form-field class="new-question-textarea">
+    <mat-label>Question</mat-label>
+    <textarea matInput placeholder="Some question?" [(ngModel)]="question.questionText"></textarea>
+    <button mat-button *ngIf="question" matSuffix mat-icon-button aria-label="Clear" (click)="clearQuestionText()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="contain">
+    <div class="answer-type-rb">
+      <div style="margin: 0 10px">
+        <label id="radio-group-label" style="font-size: medium; margin: 5px 0">Answer type</label><br>
+        <mat-radio-group aria-labelledby="Select some item" [(ngModel)]="question.questionStrategy">
+          <mat-radio-button value="ONE_ANSWER" checked>Single</mat-radio-button>
+          <mat-radio-button value="MANY_ANSWERS">Multiple</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="answer-opt-count">
+      <div style="font-size: medium; text-align: center; margin: 5px 0">Answer options count</div>
+      <div style="font-size: large; text-align: center">{{calculateAnswerOptionCount()}}</div>
+    </div>
+  </div>
+
+  <div style="margin: 20px 0">
+    <div *ngFor="let answer of question.answerOptions; let i = index; trackBy: trackByFn">
+      <mat-form-field class="new-question-textarea">
+        <mat-label>Answer</mat-label>
+        <textarea matInput placeholder="Some answer"
+                  [(ngModel)]="question.answerOptions[i].answerOptionText"></textarea>
+        <button mat-button *ngIf="answer" matSuffix mat-icon-button aria-label="Clear"
+                (click)="question.answerOptions[i].answerOptionText=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-button *ngIf="isAnswerOptionLastAndNonEmpty(answer, i)" matSuffix mat-icon-button aria-label="Clear"
+                (click)="addNewAnswerOption()">
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="removeAnswerOption(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div class="save-cancel-buttons">
+      <button mat-button color="primary" [disabled]="isSaveButtonDisabled()" (click)="saveQuestion()">Save</button>
+      <button mat-button color="warn" (click)="renewQuestion()">Cancel</button>
+    </div>
+  </div>
+
+  <div>
+    <div style="margin: 30px 20px">Questions</div>
+    <div style="margin: 10px 20px" *ngFor="let question of questions; let i = index">
+      {{i + 1}}. {{question.questionText}}
+    </div>
+  </div>
+
+</div>
