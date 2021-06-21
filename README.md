@@ -18,6 +18,13 @@ nvm i v14.15.2
 sudo npm i -g @angular/cli@11.0.4
 ```
 
+## Installing Node Modules
+
+1. Install node modules from project's root:
+```bash
+npm i
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
